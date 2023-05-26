@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -14,10 +14,18 @@ type Props = {
 };
 
 const CardItem: FC<Props> = ({ item }) => {
+  const [currentColor, setCurrentColor] = useState<string>(
+    item.availableColors[0]
+  );
+
+  const onChangeColor = (color: string) => {
+    setCurrentColor(color);
+  };
+
   return (
     <div className={styles.cardItem}>
       <Image
-        src={`/product-${item.id}.png`}
+        src={`/product-${item.id}_${currentColor}.png`}
         alt={`Product ${item.id}`}
         width={258}
         height={258}
@@ -25,7 +33,7 @@ const CardItem: FC<Props> = ({ item }) => {
       <div className={styles.cardPrice}>{formatPrice(item.price)}</div>
       <div className={styles.cardTitle}>{item.title}</div>
       <div className={styles.cardDescription}>{item.description}</div>
-      <ColorPicker colors={item.availableColors} />
+      <ColorPicker colors={item.availableColors} changeColor={onChangeColor} />
       <Button className={`${styles.button} ${styles.mainButton}`}>
         Add to cart
       </Button>

@@ -3,10 +3,16 @@ import styles from "../styles/ColorPicker.module.scss";
 
 export type ColorPickerProps = {
   colors: string[];
+  changeColor: (color: string) => void;
 };
 
-const ColorPicker: FC<ColorPickerProps> = ({ colors }) => {
+const ColorPicker: FC<ColorPickerProps> = ({ colors, changeColor }) => {
   const [activeColor, setActiveColor] = useState(colors[0]);
+
+  const changeColorHandler = (color: string) => {
+    setActiveColor(color);
+    changeColor(color);
+  };
 
   return (
     <ul className={styles.colorBlock}>
@@ -20,7 +26,7 @@ const ColorPicker: FC<ColorPickerProps> = ({ colors }) => {
             <input type="radio" />
             <span
               className={styles[item]}
-              onClick={() => setActiveColor(item)}
+              onClick={() => changeColorHandler(item)}
             ></span>
           </label>
         </li>
