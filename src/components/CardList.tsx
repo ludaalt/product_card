@@ -1,4 +1,4 @@
-import { data } from "../data";
+import { data } from "../../data";
 import CardItem from "./CardItem";
 
 import styles from "../styles/Cards.module.scss";

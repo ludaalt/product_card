@@ -1,5 +1,5 @@
 import Head from "next/head";
-import CardList from "../components/CardList";
+import CardList from "../src/components/CardList";
 
 const Home = () => {
   return (
