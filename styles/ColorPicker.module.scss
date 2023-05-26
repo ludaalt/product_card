@@ -1,0 +1,41 @@
+.colorBlock {
+  display: flex;
+
+  li:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.label {
+  display: flex;
+}
+
+.label input {
+  display: none;
+}
+
+.label span {
+  height: 40px;
+  width: 40px;
+
+  border-radius: 50%;
+  display: inline-block;
+
+  border: 4px solid #ffffff;
+}
+
+.label.active span {
+  border: 4px solid #000000;
+}
+
+.red {
+  background-color: #ee4444;
+}
+
+.blue {
+  background-color: #3c81f6;
+}
+
+.black {
+  background-color: #000000;
+}
